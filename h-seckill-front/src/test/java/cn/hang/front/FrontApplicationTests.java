@@ -1,4 +1,4 @@
-package cn.hang.hseckill.front;
+package cn.hang.front;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HSeckillFrontApplicationTests {
+public class FrontApplicationTests {
 
     @Test
     public void contextLoads() {

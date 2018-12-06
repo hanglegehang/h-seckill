@@ -1,6 +1,6 @@
 #server
 server:
-  port: 8585
+  port: 8003
   tomcat:
     basedir: .
     accesslog:
@@ -24,13 +24,13 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:9000/eureka/
+      defaultZone: http://127.0.0.1:9000/eureka/
 
 spring:
   application:
-    name: h-seckill-front-web-dev
+    name: h-seckill-front-dev
   redis:
-    host: 172.16.10.71
+    host: 127.0.0.1
     port: 6379
     database: 3
     password:

@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lihang15
  */
 @SpringBootApplication
-public class SeckillManageWebApplication {
+public class ManageWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SeckillManageWebApplication.class, args);
+        SpringApplication.run(ManageWebApplication.class, args);
     }
 }
