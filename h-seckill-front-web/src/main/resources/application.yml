@@ -1,0 +1,39 @@
+#server
+server:
+  port: 8585
+  tomcat:
+    basedir: .
+    accesslog:
+      enabled: true
+      directory: ./logs
+      pattern: "%{X-Forwarded-For}i %a %{X-B3-TraceId}i %t %m %U %s %b %D"
+      rename-on-rotate: true
+      suffix: .log
+      prefix: access
+      rotate: true
+      buffered: false
+      file-date-format: yyyy-MM-dd
+#log
+logging:
+  config: classpath:logback.xml
+  level:
+    cn:
+      hang:
+        front: debug
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+
+spring:
+  application:
+    name: h-seckill-front-web-dev
+  redis:
+    host: 172.16.10.71
+    port: 6379
+    database: 3
+    password:
+  mvc:
+    servlet:
+      path: /front
