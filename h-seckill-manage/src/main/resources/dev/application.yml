@@ -1,6 +1,6 @@
 #server
 server:
-  port: 8003
+  port: 8004
   tomcat:
     basedir: .
     accesslog:
@@ -27,8 +27,17 @@ eureka:
       defaultZone: http://127.0.0.1:9000/eureka/
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.25.105.200:3306/hseckill?useUnicode=true&characterEncoding=utf-8
+    username: hseckill
+    password: hseckill
   application:
-    name: h-seckill-front-dev
+    name: h-seckill-manage-dev
   redis:
     host: 127.0.0.1
     port: 6379
@@ -36,4 +45,5 @@ spring:
     password:
   mvc:
     servlet:
-      path: /front
+      path: /manage
+

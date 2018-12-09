@@ -1,6 +1,6 @@
 #server
 server:
-  port: 8004
+  port: 8003
   tomcat:
     basedir: .
     accesslog:
@@ -36,4 +36,4 @@ spring:
     password:
   mvc:
     servlet:
-      path: /front
+      path: /manage-web

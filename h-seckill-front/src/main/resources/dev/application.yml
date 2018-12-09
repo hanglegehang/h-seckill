@@ -1,6 +1,6 @@
 #server
 server:
-  port: 8003
+  port: 8002
   tomcat:
     basedir: .
     accesslog:
@@ -28,7 +28,7 @@ eureka:
 
 spring:
   application:
-    name: h-seckill-manage-dev
+    name: h-seckill-front-dev
   redis:
     host: 127.0.0.1
     port: 6379
@@ -36,4 +36,4 @@ spring:
     password:
   mvc:
     servlet:
-      path: /manage
+      path: /front

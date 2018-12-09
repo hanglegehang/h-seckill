@@ -1,4 +1,4 @@
-package cn.hang.hseckill.hseckillmanage;
+package cn.hang.hseckill.manage;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

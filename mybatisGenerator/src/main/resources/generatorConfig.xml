@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="my" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator  type="cn.hang.generator.RemarksCommentGenerator"/>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://120.25.105.200:3306/hseckill" userId="hseckill"
+                        password="hseckill">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="cn.hang.manage.pojo"
+                            targetProject="./src">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="cn.hang.manage.mapper"
+                         targetProject="./src">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="cn.hang.manage.mapper"
+                             targetProject="./src" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="h_admin_user" domainObjectName="HAdminUserPO"/>
+        <table tableName="h_info" domainObjectName="HInfoPO"/>
+        <table tableName="h_permission" domainObjectName="HPermissionPO"/>
+        <table tableName="h_role" domainObjectName="HRolePO"/>
+        <table tableName="h_role_perm" domainObjectName="HRolePermPO"/>
+        <table tableName="h_item" domainObjectName="HItemPO"/>
+        <table tableName="h_item_cat" domainObjectName="HItemCatPO"/>
+    </context>
+</generatorConfiguration>
