@@ -142,7 +142,7 @@ function start_service()
 
 function stop_service()
 {
-    stop_http_server
+#    stop_http_server
     if [ -f "$EXEC_PID_FILE" ]; then
         EXEC_PID=$(cat ${EXEC_PID_FILE})
     else
