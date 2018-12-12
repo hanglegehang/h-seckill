@@ -15,7 +15,7 @@ CONF_DIR=${DEPLOY_DIR}/conf
 LOG_DIR=${DEPLOY_DIR}/logs
 TEMP_DIR=${DEPLOY_DIR}/temp
 mkdir -p ${TEMP_DIR}
-JAR_BIN=`ls ${BIN_DIR}/*.jar`
+JAR_BIN=`ls ${BIN_DIR}/../*.jar`
 
 # loading system environment
 if [ -f ${BIN_DIR}/java_env.sh ]; then
@@ -150,7 +150,7 @@ function stop_service()
     fi
     kill ${EXEC_PID} > /dev/null 2>&1
     COUNT=`ps --no-heading -C java -f --width 2000 | grep "$DEPLOY_DIR" | awk '{print $2}' | wc -l`
-    if [ $COUNT -gt 0 ]; then
+    if [ ${COUNT} -gt 0 ]; then
         sleep 5
         kill -9 ${EXEC_PID} > /dev/null 2>&1
     fi
