@@ -1,0 +1,49 @@
+#server
+server:
+  port: 8004
+  tomcat:
+    basedir: .
+    accesslog:
+      enabled: true
+      directory: ./logs
+      pattern: "%{X-Forwarded-For}i %a %{X-B3-TraceId}i %t %m %U %s %b %D"
+      rename-on-rotate: true
+      suffix: .log
+      prefix: access
+      rotate: true
+      buffered: false
+      file-date-format: yyyy-MM-dd
+#log
+logging:
+  config: classpath:logback.xml
+  level:
+    cn:
+      hang:
+        front: debug
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9000/eureka/
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.25.105.200:3306/hseckill?useUnicode=true&characterEncoding=utf-8
+    username: hseckill
+    password: hseckill
+  application:
+    name: h-seckill-manage-dev
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 3
+    password:
+  mvc:
+    servlet:
+      path: /manage
+
