@@ -1,5 +1,13 @@
 server:
   port: 9000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    shutdown:
+      enabled: true
+      sensitive: false
 
 eureka:
   instance:
@@ -8,7 +16,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     service-url:
-     defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 spring:
   application:

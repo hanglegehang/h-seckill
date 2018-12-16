@@ -103,7 +103,7 @@ function check_start_log() {
         eval line_num=$(grep -i -n -E "$start_completely_flag" ${STDOUT_FILE} | cut -d':' -f1|head -1)
         if [ "${line_num}"x == x ]; then
             echo -ne "."
-            sleep $sleep_time && let "retry_time += 1"
+            sleep ${sleep_time} && let "retry_time += 1"
         else
             head -n ${line_num} ${STDOUT_FILE} | grep " ERROR \| FATAL " >>/dev/null 2>&1
             return $?
@@ -184,7 +184,7 @@ function start() {
     done
     echo
 
-    if [ ${retry_time} -ge $TOTAL_RETRY_TIME ]; then
+    if [ ${retry_time} -ge ${TOTAL_RETRY_TIME} ]; then
         echo "Error: process stop, failed!"
         exit 1
     else

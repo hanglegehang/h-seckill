@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface HItemPOMapper {
 
-
     int deleteByPrimaryKey(String id);
 
     int insert(HItemPO record);

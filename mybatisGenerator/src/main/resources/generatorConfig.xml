@@ -14,7 +14,7 @@
                         password="hseckill">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="cn.hang.manage.pojo"
+        <javaModelGenerator targetPackage="cn.hang.manage.po"
                             targetProject="./src">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -30,12 +30,21 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="h_admin_user" domainObjectName="HAdminUserPO"/>
-        <table tableName="h_info" domainObjectName="HInfoPO"/>
-        <table tableName="h_permission" domainObjectName="HPermissionPO"/>
-        <table tableName="h_role" domainObjectName="HRolePO"/>
-        <table tableName="h_role_perm" domainObjectName="HRolePermPO"/>
-        <table tableName="h_item" domainObjectName="HItemPO"/>
-        <table tableName="h_item_cat" domainObjectName="HItemCatPO"/>
+        <table tableName="h_address" domainObjectName="AdminUserPO" />
+        <table tableName="h_admin_user" domainObjectName="AdminUserPO" />
+        <table tableName="h_info" domainObjectName="InfoPO"/>
+        <table tableName="h_item" domainObjectName="ItemPO"/>
+        <table tableName="h_item_cat" domainObjectName="ItemCatPO"/>
+        <table tableName="h_item_detail" domainObjectName="ItemDetailPO"/>
+        <table tableName="h_order" domainObjectName="OrderPO"/>
+        <table tableName="h_order_item" domainObjectName="OrderItemPO"/>
+        <table tableName="h_panel" domainObjectName="PanelPO"/>
+        <table tableName="h_panel_content" domainObjectName="PanelContentPO"/>
+        <table tableName="h_permission" domainObjectName="PermissionPO"/>
+        <table tableName="h_role" domainObjectName="RolePO"/>
+        <table tableName="h_role_perm" domainObjectName="RolePermPO"/>
+        <table tableName="h_seckill_item" domainObjectName="SeckillItemPermPO"/>
+        <table tableName="h_thanks" domainObjectName="ThanksPO"/>
+        <table tableName="h_user" domainObjectName="UserPO"/>
     </context>
 </generatorConfiguration>

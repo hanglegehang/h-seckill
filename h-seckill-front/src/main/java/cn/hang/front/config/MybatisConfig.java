@@ -1,4 +1,4 @@
-package cn.hang.hseckill.manage.mapper;
+package cn.hang.front.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
