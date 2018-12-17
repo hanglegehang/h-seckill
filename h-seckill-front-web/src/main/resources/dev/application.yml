@@ -22,6 +22,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://120.25.105.200:9000/eureka/
+feign:
+  hystrix:
+    enabled: true
+
 
 spring:
   application:

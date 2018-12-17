@@ -14,7 +14,8 @@ public class ItemFallbackFactory implements FallbackFactory<ItemClient> {
         return new ItemClient() {
             @Override
             public Response getIndexInfo() {
-                return null;
+                log.error("ItemClient.getIndexInfo failBack");
+                return Response.error();
             }
         };
     }

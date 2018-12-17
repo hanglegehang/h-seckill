@@ -2,6 +2,9 @@ package cn.hang.hseckill.common.pojo;
 
 
 import cn.hang.hseckill.common.constant.ResponseMessageEnum;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -10,6 +13,9 @@ import java.io.Serializable;
  * @description
  * @create 2018-11-27 19:38
  **/
+@Getter
+@Setter
+@ToString
 public class Response<T> implements Serializable {
     private int code;
     private String message;
@@ -57,35 +63,6 @@ public class Response<T> implements Serializable {
 
     public static <T> Response<T> error(ResponseMessageInterface msg) {
         return new Response<T>(msg);
-    }
-
-    @Override
-    public String toString() {
-        return "Response(code=" + this.getCode() + ", message=" + this.getMessage() + ", data=" + this.getData() + ")";
-    }
-
-    public int getCode() {
-        return this.code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return this.message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public T getData() {
-        return this.data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 }
 

@@ -66,6 +66,7 @@ public class PanelPO {
 
     private List<PanelContentPO> panelContents;
 
+    @Override
     public String toString() {
         return "PanelPO(id=" + this.getId() + ", name=" + this.getName() + ", type=" + this.getType() + ", sortOrder=" + this.getSortOrder() + ", position=" + this.getPosition() + ", limitNum=" + this.getLimitNum() + ", status=" + this.getStatus() + ", isDelete=" + this.getIsDelete() + ", remark=" + this.getRemark() + ", gmtCreate=" + this.getGmtCreate() + ", gmtUpdate=" + this.getGmtUpdate() + ", panelContents=" + this.getPanelContents() + ")";
     }

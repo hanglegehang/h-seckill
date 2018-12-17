@@ -1,7 +1,7 @@
 package cn.hang.front.service;
 
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.dto.LoginInfoDTO;
+import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
 import cn.hang.hseckill.pojo.po.UserPO;
 
 /**
@@ -11,9 +11,13 @@ import cn.hang.hseckill.pojo.po.UserPO;
  **/
 public interface LoginService {
 
-    /** 登录验证
+    /**
+     * 登录验证
+     *
      * @param userPO
      * @return
      */
-    public Response<UserPO> loginCheck(LoginInfoDTO userPO);
+    public Response<UserPO> loginCheck(LoginRegisterInfoDTO userPO);
+
+    Response register(LoginRegisterInfoDTO loginRegisterInfoDTO);
 }

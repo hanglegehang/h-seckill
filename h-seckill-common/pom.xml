@@ -14,10 +14,7 @@
         <groupId>cn.hang.hseckill</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-
-    </properties>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -32,12 +29,10 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>${commons-collections.version}</version>
         </dependency>
 
     </dependencies>

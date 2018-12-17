@@ -10,14 +10,15 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class LoginInfoDTO {
+public class LoginRegisterInfoDTO {
     private String username;
     private String password;
     private String challenge;
     private String validate;
     private String seccode;
 
+    @Override
     public String toString() {
-        return "LoginInfoDTO(username=" + this.getUsername() + ", password=" + this.getPassword() + ", challenge=" + this.getChallenge() + ", validate=" + this.getValidate() + ", seccode=" + this.getSeccode() + ")";
+        return "LoginRegisterInfoDTO(username=" + this.getUsername() + ", password=" + this.getPassword() + ", challenge=" + this.getChallenge() + ", validate=" + this.getValidate() + ", seccode=" + this.getSeccode() + ")";
     }
 }

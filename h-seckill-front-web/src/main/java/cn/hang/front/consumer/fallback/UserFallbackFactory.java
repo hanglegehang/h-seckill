@@ -1,6 +1,7 @@
 package cn.hang.front.consumer.fallback;
 
 import cn.hang.front.consumer.UserClient;
+import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
 import cn.hang.hseckill.pojo.po.UserPO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +14,15 @@ public class UserFallbackFactory implements FallbackFactory<UserClient> {
     public UserClient create(Throwable cause) {
         return new UserClient() {
             @Override
-            public String getHotelAccountantRecord() {
-                return "hhhhhhh";
+            public UserPO getUserByUserName(String username) {
+                log.error("UserClient.getUserByUserName failBack,username={}", username, cause);
+                return null;
             }
 
             @Override
-            public UserPO getUserByUserName(String username) {
-                return null;
+            public int insertUser(LoginRegisterInfoDTO loginRegisterInfoDTO) {
+                log.error("UserClient.insertUser failBack,loginRegisterInfoDTO={}", loginRegisterInfoDTO, cause);
+                return 0;
             }
         };
     }

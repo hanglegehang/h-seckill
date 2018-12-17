@@ -16,12 +16,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @RequestMapping("/checkLogin")
-    public Response index() {
-        UserPO userPO = (UserPO) SessionUtils.get("userInfo");
-        if (userPO == null) {
-            return Response.error(ResponseMessageEnum.NO_COMPETENCE);
-        }
-        return Response.success(userPO);
-    }
+
 }

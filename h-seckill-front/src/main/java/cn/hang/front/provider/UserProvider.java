@@ -1,15 +1,16 @@
 package cn.hang.front.provider;
 
 import cn.hang.front.mapper.UserPOMapper;
+import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
 import cn.hang.hseckill.pojo.po.UserPO;
 import cn.hang.hseckill.pojo.po.UserPOExample;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.DigestUtils;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,5 +37,16 @@ public class UserProvider {
             return null;
         }
         return userPOList.get(0);
+    }
+
+    @PostMapping("/insertUser")
+    int insertUser(@RequestBody LoginRegisterInfoDTO loginRegisterInfoDTO) {
+        UserPO userPO = new UserPO();
+        userPO.setUsername(loginRegisterInfoDTO.getUsername());
+        String md5Password = DigestUtils.md5DigestAsHex(loginRegisterInfoDTO.getPassword().getBytes());
+        userPO.setPassword(md5Password);
+        userPO.setGmtUpdate(new Date());
+        userPO.setGmtCreate(new Date());
+        return userPOMapper.insertSelective(userPO);
     }
 }

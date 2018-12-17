@@ -13,8 +13,8 @@
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
-    <result column="gmt_create" jdbcType="INTEGER" property="gmtCreate" />
-    <result column="gmt_update" jdbcType="INTEGER" property="gmtUpdate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -117,8 +117,8 @@
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
       #{description,jdbcType=INTEGER}, #{balance,jdbcType=BIGINT}, #{avatar,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{gmtCreate,jdbcType=INTEGER}, 
-      #{gmtUpdate,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP},
+      #{gmtUpdate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.hang.hseckill.pojo.po.UserPO">
     insert into h_user
@@ -198,10 +198,10 @@
         #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="gmtCreate != null">
-        #{gmtCreate,jdbcType=INTEGER},
+        #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtUpdate != null">
-        #{gmtUpdate,jdbcType=INTEGER},
+        #{gmtUpdate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -248,10 +248,10 @@
         is_delete = #{record.isDelete,jdbcType=INTEGER},
       </if>
       <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=INTEGER},
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.gmtUpdate != null">
-        gmt_update = #{record.gmtUpdate,jdbcType=INTEGER},
+        gmt_update = #{record.gmtUpdate,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -271,8 +271,8 @@
       avatar = #{record.avatar,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       is_delete = #{record.isDelete,jdbcType=INTEGER},
-      gmt_create = #{record.gmtCreate,jdbcType=INTEGER},
-      gmt_update = #{record.gmtUpdate,jdbcType=INTEGER}
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_update = #{record.gmtUpdate,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -311,10 +311,10 @@
         is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="gmtCreate != null">
-        gmt_create = #{gmtCreate,jdbcType=INTEGER},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtUpdate != null">
-        gmt_update = #{gmtUpdate,jdbcType=INTEGER},
+        gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -331,8 +331,8 @@
       avatar = #{avatar,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       is_delete = #{isDelete,jdbcType=INTEGER},
-      gmt_create = #{gmtCreate,jdbcType=INTEGER},
-      gmt_update = #{gmtUpdate,jdbcType=INTEGER}
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
