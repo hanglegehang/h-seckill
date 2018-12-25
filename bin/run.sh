@@ -75,7 +75,7 @@ EXEC_PID_FILE="$LOG_DIR/instance.pid"
 # check if process is exist
 # exist: return 1
 function is_process_exist() {
-    local pid=$(ps axuf | grep -Pi "${RUNJAVA}.*${DEPLOY_DIR}" | grep -v grep | awk '{print $2}')
+    local pid=$(ps axuf | grep -Pi "${RUNJAVA}.*${DEPLOY_DIR}/temp" | grep -v grep | awk '{print $2}')
     if [ "$pid"x = x ]; then
         return 0
     else
@@ -214,8 +214,8 @@ function stop() {
         echo "already stoped!"
         return
     fi
-
     stop_service
+    echo "Stop finished"
 }
 
 function restart() {
