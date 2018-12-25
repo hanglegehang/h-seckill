@@ -29,6 +29,7 @@ eureka:
       defaultZone: http://120.25.105.200:9000/eureka/
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
 spring:
   application:
     name: h-seckill-front
