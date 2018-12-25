@@ -26,7 +26,6 @@
         <module>h-seckill-common</module>
         <module>h-seckill-pojo</module>
         <module>mybatisGenerator</module>
-        <module>h-seckill-front-web</module>
     </modules>
 
     <properties>
