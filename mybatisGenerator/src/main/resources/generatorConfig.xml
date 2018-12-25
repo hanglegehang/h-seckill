@@ -14,37 +14,38 @@
                         password="hseckill">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="cn.hang.manage.po"
+        <javaModelGenerator targetPackage="cn.hang.hseckill.pojo.po"
                             targetProject="./src">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
+            <property name="" value=""/>
         </javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="cn.hang.manage.mapper"
+        <sqlMapGenerator targetPackage="cn.hang.front.mapper"
                          targetProject="./src">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="cn.hang.manage.mapper"
+        <javaClientGenerator targetPackage="cn.hang.front.mapper"
                              targetProject="./src" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="h_address" domainObjectName="AdminUserPO" />
-        <table tableName="h_admin_user" domainObjectName="AdminUserPO" />
-        <table tableName="h_info" domainObjectName="InfoPO"/>
-        <table tableName="h_item" domainObjectName="ItemPO"/>
-        <table tableName="h_item_cat" domainObjectName="ItemCatPO"/>
-        <table tableName="h_item_detail" domainObjectName="ItemDetailPO"/>
-        <table tableName="h_order" domainObjectName="OrderPO"/>
-        <table tableName="h_order_item" domainObjectName="OrderItemPO"/>
-        <table tableName="h_panel" domainObjectName="PanelPO"/>
+        <!--<table tableName="h_address" domainObjectName="AddressPO" />-->
+        <!--<table tableName="h_admin_user" domainObjectName="AdminUserPO" />-->
+        <!--<table tableName="h_info" domainObjectName="InfoPO"/>-->
+        <!--<table tableName="h_item" domainObjectName="ItemPO"/>-->
+        <!--<table tableName="h_item_cat" domainObjectName="ItemCatPO"/>-->
+        <!--<table tableName="h_item_detail" domainObjectName="ItemDetailPO"/>-->
+        <!--<table tableName="h_order" domainObjectName="OrderPO"/>-->
+        <!--<table tableName="h_order_item" domainObjectName="OrderItemPO"/>-->
+        <!--<table tableName="h_panel" domainObjectName="PanelPO"/>-->
         <table tableName="h_panel_content" domainObjectName="PanelContentPO"/>
-        <table tableName="h_permission" domainObjectName="PermissionPO"/>
-        <table tableName="h_role" domainObjectName="RolePO"/>
-        <table tableName="h_role_perm" domainObjectName="RolePermPO"/>
-        <table tableName="h_seckill_item" domainObjectName="SeckillItemPermPO"/>
-        <table tableName="h_thanks" domainObjectName="ThanksPO"/>
-        <table tableName="h_user" domainObjectName="UserPO"/>
+        <!--<table tableName="h_permission" domainObjectName="PermissionPO"/>-->
+        <!--<table tableName="h_role" domainObjectName="RolePO"/>-->
+        <!--<table tableName="h_role_perm" domainObjectName="RolePermPO"/>-->
+        <!--<table tableName="h_seckill_item" domainObjectName="SeckillItemPO"/>-->
+        <!--<table tableName="h_thanks" domainObjectName="ThanksPO"/>-->
+        <!--<table tableName="h_user" domainObjectName="UserPO"/>-->
     </context>
 </generatorConfiguration>

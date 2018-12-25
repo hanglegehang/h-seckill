@@ -2,14 +2,11 @@ package cn.hang.front.mapper;
 
 import cn.hang.hseckill.pojo.po.PanelPO;
 import cn.hang.hseckill.pojo.po.PanelPOExample;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
-/**
- * @author lihang15
- */
 @Mapper
 public interface PanelPOMapper {
     long countByExample(PanelPOExample example);
@@ -33,6 +30,4 @@ public interface PanelPOMapper {
     int updateByPrimaryKeySelective(PanelPO record);
 
     int updateByPrimaryKey(PanelPO record);
-
-
 }

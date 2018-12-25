@@ -71,7 +71,6 @@ public class LoginController {
         }
     }
 
-
     @RequestMapping("/loginOut")
     public Response loginOut() {
         SessionUtils.remove(Global.SESSION_USER_INFO);

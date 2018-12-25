@@ -3,11 +3,8 @@ package cn.hang.front.mapper;
 import cn.hang.hseckill.pojo.po.PanelContentPO;
 import cn.hang.hseckill.pojo.po.PanelContentPOExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-@Mapper
 public interface PanelContentPOMapper {
     long countByExample(PanelContentPOExample example);
 

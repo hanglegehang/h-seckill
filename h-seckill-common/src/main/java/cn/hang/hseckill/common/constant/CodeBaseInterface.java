@@ -7,6 +7,9 @@ public interface CodeBaseInterface {
     String getMessage();
 
     enum StatusEnum implements CodeBaseInterface {
+        /**
+         * 使用
+         */
         USED(1, "使用"),
         NOT_USED(0, "不使用"),
         ;
@@ -67,6 +70,33 @@ public interface CodeBaseInterface {
         private String message;
 
         PanelPositionEnum(int code, String message) {
+            this.code = code;
+            this.message = message;
+        }
+
+        @Override
+        public int getCode() {
+            return this.code;
+        }
+
+        @Override
+        public String getMessage() {
+            return this.message;
+        }
+    }
+
+    enum ItemIsSeckillEnum implements CodeBaseInterface {
+        /**
+         * 删除
+         */
+        NOT_IN_SECKILL(0, "非秒杀商品"),
+        IN_SECKILL(1, "秒杀商品"),
+        ;
+
+        private int code;
+        private String message;
+
+        ItemIsSeckillEnum(int code, String message) {
             this.code = code;
             this.message = message;
         }

@@ -2,13 +2,18 @@ package cn.hang.hseckill.pojo.po;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 public class PanelPO {
+
+    private List<PanelContentPO> panelContents;
+
     /**
      * 类目ID
      */
@@ -20,7 +25,7 @@ public class PanelPO {
     private String name;
 
     /**
-     * 类型 0轮播图 1板块种类一 2板块种类二 3板块种类三
+     * 类型 0轮播图 1板块种类一 2板块种类二 3板块种类三 
      */
     private Integer type;
 
@@ -64,10 +69,4 @@ public class PanelPO {
      */
     private Date gmtUpdate;
 
-    private List<PanelContentPO> panelContents;
-
-    @Override
-    public String toString() {
-        return "PanelPO(id=" + this.getId() + ", name=" + this.getName() + ", type=" + this.getType() + ", sortOrder=" + this.getSortOrder() + ", position=" + this.getPosition() + ", limitNum=" + this.getLimitNum() + ", status=" + this.getStatus() + ", isDelete=" + this.getIsDelete() + ", remark=" + this.getRemark() + ", gmtCreate=" + this.getGmtCreate() + ", gmtUpdate=" + this.getGmtUpdate() + ", panelContents=" + this.getPanelContents() + ")";
-    }
 }

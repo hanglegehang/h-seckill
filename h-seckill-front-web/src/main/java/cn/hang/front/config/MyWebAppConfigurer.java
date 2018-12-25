@@ -21,7 +21,8 @@ public class MyWebAppConfigurer extends WebMvcConfigurationSupport {
         registry.addInterceptor(new SessionInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/item/**")
-                .excludePathPatterns("/login/**");
+                .excludePathPatterns("/login/**")
+                .excludePathPatterns("/seckill/now");
         super.addInterceptors(registry);
     }
 

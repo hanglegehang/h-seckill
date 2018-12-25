@@ -1,13 +1,11 @@
 package cn.hang.front.mapper;
 
-
-import java.util.List;
-
 import cn.hang.hseckill.pojo.po.ItemPO;
 import cn.hang.hseckill.pojo.po.ItemPOExample;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface ItemPOMapper {
@@ -23,7 +21,6 @@ public interface ItemPOMapper {
 
     List<ItemPO> selectByExample(ItemPOExample example);
 
-    @Select("SELECT * FROM h_item WHERE id = #{id}")
     ItemPO selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") ItemPO record, @Param("example") ItemPOExample example);

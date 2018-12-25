@@ -2,10 +2,14 @@ package cn.hang.front.consumer.fallback;
 
 import cn.hang.front.consumer.ItemClient;
 import cn.hang.hseckill.common.pojo.Response;
+import cn.hang.hseckill.pojo.po.ItemPO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author lihang15
+ */
 @Slf4j
 @Component
 public class ItemFallbackFactory implements FallbackFactory<ItemClient> {
@@ -15,6 +19,12 @@ public class ItemFallbackFactory implements FallbackFactory<ItemClient> {
             @Override
             public Response getIndexInfo() {
                 log.error("ItemClient.getIndexInfo failBack");
+                return Response.error();
+            }
+
+            @Override
+            public Response<ItemPO> getItemById(Long id) {
+                log.error("ItemClient.getItemById failBack id={}", id);
                 return Response.error();
             }
         };

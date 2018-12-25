@@ -1,15 +1,21 @@
 package cn.hang.front.provider;
 
+import cn.hang.front.mapper.ItemPOMapper;
 import cn.hang.front.mapper.PanelContentPOMapper;
 import cn.hang.front.mapper.PanelPOMapper;
+import cn.hang.front.mapper.SeckillItemPOMapper;
 import cn.hang.hseckill.common.constant.CodeBaseInterface;
+import cn.hang.hseckill.common.constant.Global;
+import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.po.PanelContentPO;
-import cn.hang.hseckill.pojo.po.PanelContentPOExample;
-import cn.hang.hseckill.pojo.po.PanelPO;
-import cn.hang.hseckill.pojo.po.PanelPOExample;
+import cn.hang.hseckill.pojo.po.*;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,8 +37,24 @@ public class ItemProvider {
     @Autowired
     private PanelContentPOMapper panelContentPOMapper;
 
+    @Autowired
+    private ItemPOMapper itemPOMapper;
+
+    @Autowired
+    private SeckillItemPOMapper seckillItemPOMapper;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
     @RequestMapping("/home")
     public Response home() {
+        Response response;
+        String homeInfo = stringRedisTemplate.opsForValue().get(Global.CACHE_SECKILL_HOME_INFO);
+        if (StringUtils.isNotBlank(homeInfo)) {
+            response = JSON.parseObject(homeInfo, Response.class);
+            return response;
+        }
+
         PanelPOExample panelPOExample = new PanelPOExample();
         panelPOExample.setOrderByClause("sort_order");
         panelPOExample.createCriteria().andIsDeleteEqualTo(CodeBaseInterface.DeleteEnum.NOT_DELETE.getCode())
@@ -45,8 +67,49 @@ public class ItemProvider {
             panelContentPOExample.setOrderByClause("sort_order");
             criteria.andPanelIdEqualTo(Integer.valueOf(String.valueOf(panelPO.getId())));
             List<PanelContentPO> panelContentPOList = panelContentPOMapper.selectByExample(panelContentPOExample);
+            for (PanelContentPO panelContentPO : panelContentPOList) {
+                if (panelContentPO.getItemId() != null) {
+                    ItemPO itemPO = itemPOMapper.selectByPrimaryKey(panelContentPO.getItemId());
+                    panelContentPO.setIsSeckillItem(itemPO.getIsSeckill());
+                    if (itemPO.getIsSeckill() == CodeBaseInterface.ItemIsSeckillEnum.IN_SECKILL.getCode()) {
+                        SeckillItemPO seckillItemPO = seckillItemPOMapper.selectByPrimaryKey(itemPO.getSeckillItemId());
+                        panelContentPO.setSeckillItemPO(seckillItemPO);
+                    } else {
+                        panelContentPO.setItemPO(itemPO);
+                    }
+                }
+            }
             panelPO.setPanelContents(panelContentPOList);
         }
-        return Response.success(list);
+        response = Response.success(list);
+        stringRedisTemplate.opsForValue().set(Global.CACHE_SECKILL_HOME_INFO, JSON.toJSONString(response));
+        return response;
+    }
+
+    /**
+     * 获取商品id
+     *
+     * @return
+     */
+    @GetMapping("/{id}")
+    Response<ItemPO> getItemById(@PathVariable("id") Long id) {
+        String itemJsonString = stringRedisTemplate.opsForValue().get(Global.CACHE_SECKILL_ITEM_INFO + id);
+        if (StringUtils.isNotBlank(itemJsonString)) {
+            log.info("缓存读取数据");
+            ItemPO itemPO = JSON.parseObject(itemJsonString, ItemPO.class);
+            return Response.success(itemPO);
+        } else {
+            ItemPO itemPO = itemPOMapper.selectByPrimaryKey(id);
+            if (itemPO.getIsSeckill() == CodeBaseInterface.ItemIsSeckillEnum.IN_SECKILL.getCode()) {
+                SeckillItemPO seckillItemPO = seckillItemPOMapper.selectByPrimaryKey(itemPO.getSeckillItemId());
+                if (seckillItemPO == null) {
+                    return Response.error();
+                }
+                itemPO.setSeckillItemPO(seckillItemPO);
+            }
+
+            stringRedisTemplate.opsForValue().set(Global.CACHE_SECKILL_ITEM_INFO + id, JSON.toJSONString(itemPO));
+            return Response.success(itemPO);
+        }
     }
 }

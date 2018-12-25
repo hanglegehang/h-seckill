@@ -26,7 +26,7 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://120.25.105.200:9000/eureka/
+      defaultZone: http://127.0.0.1:9000/eureka/
 
 spring:
   application:
@@ -42,3 +42,9 @@ spring:
     port: 6379
     database: 3
     password:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
