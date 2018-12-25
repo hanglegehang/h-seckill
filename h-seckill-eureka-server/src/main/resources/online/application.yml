@@ -1,5 +1,13 @@
 server:
   port: 9000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    shutdown:
+      enabled: true
+      sensitive: false
 
 eureka:
   instance:

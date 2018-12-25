@@ -1,6 +1,8 @@
 #server
 server:
   port: 8002
+  servlet:
+    context-path: /front
   tomcat:
     basedir: .
     accesslog:
@@ -25,7 +27,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://120.25.105.200:9000/eureka/
-
+  instance:
+    prefer-ip-address: true
 spring:
   application:
     name: h-seckill-front
