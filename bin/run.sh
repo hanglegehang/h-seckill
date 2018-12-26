@@ -1,9 +1,6 @@
 #!/bin/bash
-# @Author: guofengzhao@passiontec.cn
-# @Date: 2015/06/11
 # Usage: sh run.sh start|stop
 
-#
 cd $(dirname $0)
 export BIN_DIR=$(pwd)
 cd ${BIN_DIR}
@@ -223,19 +220,9 @@ function restart() {
     if [ "$pid"x != x ]; then
         # thread dump
         ${JAVA_HOME}/bin/jstack ${pid} > ${LOG_DIR}/thread.dump.$(date +%Y%m%d.%H%M)
-        stop_service
+        start
     fi
-    start_service
-}
-
-
-function stop_http_server {
-  local shutdown_url=$(get_shutdown_url "${BIN_DIR}/../application.yml")
-  echo "shutdown url:$shutdown_url"
-  curl -X POST "$shutdown_url"
-  echo ""
-  echo "wait amoment ......."
-  sleep 6
+    stop
 }
 
 case $1 in
