@@ -1,6 +1,8 @@
 #server
 server:
   port: 8001
+  session:
+    timeout: 84600
   tomcat:
     basedir: .
     accesslog:

@@ -1,7 +1,13 @@
 package cn.hang.front.provider;
 
+import cn.hang.front.mapper.AddressPOMapper;
 import cn.hang.front.mapper.UserPOMapper;
+import cn.hang.front.service.UserService;
+import cn.hang.hseckill.common.constant.CodeBaseInterface;
+import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
+import cn.hang.hseckill.pojo.po.AddressPO;
+import cn.hang.hseckill.pojo.po.AddressPOExample;
 import cn.hang.hseckill.pojo.po.UserPO;
 import cn.hang.hseckill.pojo.po.UserPOExample;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +32,12 @@ public class UserProvider {
     @Autowired
     private UserPOMapper userPOMapper;
 
+    @Autowired
+    private AddressPOMapper addressPOMapper;
+
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/getUserByUserName")
     public UserPO getUserByUserName(@RequestParam String username) {
         UserPOExample userPOExample = new UserPOExample();
@@ -48,5 +60,31 @@ public class UserProvider {
         userPO.setGmtUpdate(new Date());
         userPO.setGmtCreate(new Date());
         return userPOMapper.insertSelective(userPO);
+    }
+
+    @GetMapping("/addressList/{userId}")
+    Response<List<AddressPO>> addressList(@PathVariable("userId") Long userId) {
+        AddressPOExample addressPOExample = new AddressPOExample();
+        AddressPOExample.Criteria criteria = addressPOExample.createCriteria();
+        criteria.andIsDeleteEqualTo(CodeBaseInterface.DeleteEnum.NOT_DELETE.getCode()).andUserIdEqualTo(userId);
+        List<AddressPO> list = addressPOMapper.selectByExample(addressPOExample);
+        return Response.success(list);
+    }
+
+    @PostMapping("/address/add")
+    Response addAddress(@RequestBody AddressPO addressPO) {
+        return userService.addAddress(addressPO);
+    }
+
+
+    @PostMapping("/address/del")
+    Response deleteAddress(@RequestParam Long addressId, @RequestParam Long userId) {
+        return userService.deleteAddress(addressId, userId);
+    }
+
+    @PostMapping("/address/update")
+    Response updateAddress(@RequestBody AddressPO addressVO) {
+        return userService.updateAddress(addressVO);
+
     }
 }

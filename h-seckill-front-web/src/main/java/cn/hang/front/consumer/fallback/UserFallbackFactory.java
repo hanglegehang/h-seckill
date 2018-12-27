@@ -1,12 +1,20 @@
 package cn.hang.front.consumer.fallback;
 
 import cn.hang.front.consumer.UserClient;
+import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
+import cn.hang.hseckill.pojo.po.AddressPO;
 import cn.hang.hseckill.pojo.po.UserPO;
+import cn.hang.hseckill.pojo.vo.AddressVO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+/**
+ * @author lihang15
+ */
 @Slf4j
 @Component
 public class UserFallbackFactory implements FallbackFactory<UserClient> {
@@ -23,6 +31,31 @@ public class UserFallbackFactory implements FallbackFactory<UserClient> {
             public int insertUser(LoginRegisterInfoDTO loginRegisterInfoDTO) {
                 log.error("UserClient.insertUser failBack,loginRegisterInfoDTO={}", loginRegisterInfoDTO, cause);
                 return 0;
+            }
+
+            @Override
+            public Response<List<AddressPO>> addressList(Long userId) {
+                log.error("UserClient.addressList failBack,userId={}", userId, cause);
+                return Response.error("UserClient.addressList failBack");
+            }
+
+            @Override
+            public Response addAddress(AddressPO addressPO) {
+                log.error("UserClient.addAddress failBack,addressPO={}", addressPO, cause);
+                return Response.error("UserClient.addAddress failBack");
+            }
+
+
+            @Override
+            public Response deleteAddress(Long addressId, Long userId) {
+                log.error("UserClient.deleteAddress failBack,addressId={},userId={}", addressId, userId, cause);
+                return Response.error("UserClient.deleteAddress failBack");
+            }
+
+            @Override
+            public Response updateAddress(AddressPO addressPO) {
+                log.error("UserClient.updateAddress failBack,addressVO={}", addressPO, cause);
+                return Response.error("UserClient.updateAddress failBack");
             }
         };
     }

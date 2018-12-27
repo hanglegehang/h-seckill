@@ -31,7 +31,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<table tableName="h_address" domainObjectName="AddressPO" />-->
+        <table tableName="h_address" domainObjectName="AddressPO" />
         <!--<table tableName="h_admin_user" domainObjectName="AdminUserPO" />-->
         <!--<table tableName="h_info" domainObjectName="InfoPO"/>-->
         <!--<table tableName="h_item" domainObjectName="ItemPO"/>-->
@@ -40,7 +40,7 @@
         <!--<table tableName="h_order" domainObjectName="OrderPO"/>-->
         <!--<table tableName="h_order_item" domainObjectName="OrderItemPO"/>-->
         <!--<table tableName="h_panel" domainObjectName="PanelPO"/>-->
-        <table tableName="h_panel_content" domainObjectName="PanelContentPO"/>
+        <!--<table tableName="h_panel_content" domainObjectName="PanelContentPO"/>-->
         <!--<table tableName="h_permission" domainObjectName="PermissionPO"/>-->
         <!--<table tableName="h_role" domainObjectName="RolePO"/>-->
         <!--<table tableName="h_role_perm" domainObjectName="RolePermPO"/>-->

@@ -32,6 +32,33 @@ public interface CodeBaseInterface {
         }
     }
 
+    enum DefaultEnum implements CodeBaseInterface {
+        /**
+         * 使用
+         */
+        Default(1, "默认"),
+        Not_Default(0, "非默认"),
+        ;
+        private int code;
+        private String message;
+
+        DefaultEnum(int code, String message) {
+            this.code = code;
+            this.message = message;
+        }
+
+        @Override
+        public int getCode() {
+            return this.code;
+        }
+
+        @Override
+        public String getMessage() {
+            return this.message;
+        }
+    }
+
+
     enum DeleteEnum implements CodeBaseInterface {
         /**
          * 删除

@@ -1,12 +1,8 @@
 package cn.hang.front.provider;
 
-import cn.hang.front.mapper.ItemPOMapper;
-import cn.hang.front.mapper.PanelContentPOMapper;
-import cn.hang.front.mapper.PanelPOMapper;
-import cn.hang.front.mapper.SeckillItemPOMapper;
+import cn.hang.front.mapper.*;
 import cn.hang.hseckill.common.constant.CodeBaseInterface;
 import cn.hang.hseckill.common.constant.Global;
-import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.po.*;
 import com.alibaba.fastjson.JSON;
@@ -20,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author lihang15
@@ -42,6 +39,7 @@ public class ItemProvider {
 
     @Autowired
     private SeckillItemPOMapper seckillItemPOMapper;
+
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -83,6 +81,7 @@ public class ItemProvider {
         }
         response = Response.success(list);
         stringRedisTemplate.opsForValue().set(Global.CACHE_SECKILL_HOME_INFO, JSON.toJSONString(response));
+        stringRedisTemplate.expire(Global.CACHE_SECKILL_HOME_INFO, 12, TimeUnit.HOURS);
         return response;
     }
 
@@ -109,7 +108,10 @@ public class ItemProvider {
             }
 
             stringRedisTemplate.opsForValue().set(Global.CACHE_SECKILL_ITEM_INFO + id, JSON.toJSONString(itemPO));
+            stringRedisTemplate.expire(Global.CACHE_SECKILL_ITEM_INFO + id, 12, TimeUnit.HOURS);
             return Response.success(itemPO);
         }
     }
+
+
 }
