@@ -2,6 +2,9 @@ package cn.hang.front.service.impl;
 
 import cn.hang.front.consumer.UserClient;
 import cn.hang.front.service.LoginService;
+import cn.hang.hseckill.common.constant.CodeBaseInterface;
+import cn.hang.hseckill.common.constant.Global;
+import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.common.utils.SessionUtils;
 import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
@@ -25,11 +28,16 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Response<UserPO> loginCheck(LoginRegisterInfoDTO loginRegisterInfoDTO) {
-        UserPO userPO = userClient.getUserByUserName(loginRegisterInfoDTO.getUsername());
+
+        Response<UserPO> response = userClient.getUserByUserName(loginRegisterInfoDTO.getUsername());
+        if (response.getCode() != ResponseMessageEnum.SUCCESS.getCode()) {
+            return response;
+        }
+        UserPO userPO = response.getData();
         if (userPO != null) {
             String inputPassword = DigestUtils.md5DigestAsHex(loginRegisterInfoDTO.getPassword().getBytes());
             if (StringUtils.isNotBlank(userPO.getPassword()) && inputPassword.equals(userPO.getPassword())) {
-                SessionUtils.put("userInfo", userPO);
+                SessionUtils.put(Global.SESSION_USER_INFO, userPO);
                 return Response.success(userPO);
             } else {
                 return Response.error("用户名或密码错误");
@@ -40,7 +48,8 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Response register(LoginRegisterInfoDTO loginRegisterInfoDTO) {
-        UserPO userPO = userClient.getUserByUserName(loginRegisterInfoDTO.getUsername());
+        Response<UserPO> response = userClient.getUserByUserName(loginRegisterInfoDTO.getUsername());
+        UserPO userPO = response.getData();
         if (userPO != null) {
             return Response.error("该用户名已注册");
         }

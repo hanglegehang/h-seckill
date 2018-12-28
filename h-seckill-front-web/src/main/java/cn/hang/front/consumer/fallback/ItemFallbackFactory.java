@@ -1,8 +1,10 @@
 package cn.hang.front.consumer.fallback;
 
 import cn.hang.front.consumer.ItemClient;
+import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.po.ItemPO;
+import cn.hang.hseckill.pojo.vo.ItemVO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,13 +21,13 @@ public class ItemFallbackFactory implements FallbackFactory<ItemClient> {
             @Override
             public Response getIndexInfo() {
                 log.error("ItemClient.getIndexInfo failBack");
-                return Response.error();
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
             @Override
-            public Response<ItemPO> getItemById(Long id) {
+            public Response<ItemVO> getItemById(Long id) {
                 log.error("ItemClient.getItemById failBack id={}", id);
-                return Response.error();
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
         };
     }

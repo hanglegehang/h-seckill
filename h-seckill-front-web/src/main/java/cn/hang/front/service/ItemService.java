@@ -2,6 +2,7 @@ package cn.hang.front.service;
 
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.po.ItemPO;
+import cn.hang.hseckill.pojo.vo.ItemVO;
 
 /**
  * @author lihang15
@@ -20,6 +21,6 @@ public interface ItemService {
      * @param id
      * @return
      */
-    Response<ItemPO> getItemById(Long id);
+    Response<ItemVO> getItemById(Long id);
 
 }

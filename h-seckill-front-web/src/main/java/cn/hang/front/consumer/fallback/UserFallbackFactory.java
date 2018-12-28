@@ -1,6 +1,7 @@
 package cn.hang.front.consumer.fallback;
 
 import cn.hang.front.consumer.UserClient;
+import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
 import cn.hang.hseckill.pojo.po.AddressPO;
@@ -22,9 +23,9 @@ public class UserFallbackFactory implements FallbackFactory<UserClient> {
     public UserClient create(Throwable cause) {
         return new UserClient() {
             @Override
-            public UserPO getUserByUserName(String username) {
+            public Response<UserPO> getUserByUserName(String username) {
                 log.error("UserClient.getUserByUserName failBack,username={}", username, cause);
-                return null;
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
             @Override
@@ -36,26 +37,26 @@ public class UserFallbackFactory implements FallbackFactory<UserClient> {
             @Override
             public Response<List<AddressPO>> addressList(Long userId) {
                 log.error("UserClient.addressList failBack,userId={}", userId, cause);
-                return Response.error("UserClient.addressList failBack");
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
             @Override
             public Response addAddress(AddressPO addressPO) {
                 log.error("UserClient.addAddress failBack,addressPO={}", addressPO, cause);
-                return Response.error("UserClient.addAddress failBack");
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
 
             @Override
             public Response deleteAddress(Long addressId, Long userId) {
                 log.error("UserClient.deleteAddress failBack,addressId={},userId={}", addressId, userId, cause);
-                return Response.error("UserClient.deleteAddress failBack");
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
             @Override
             public Response updateAddress(AddressPO addressPO) {
                 log.error("UserClient.updateAddress failBack,addressVO={}", addressPO, cause);
-                return Response.error("UserClient.updateAddress failBack");
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
         };
     }

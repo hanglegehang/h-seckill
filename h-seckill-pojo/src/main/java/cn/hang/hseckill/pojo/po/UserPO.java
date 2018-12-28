@@ -1,5 +1,6 @@
 package cn.hang.hseckill.pojo.po;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,9 +11,7 @@ import java.util.Date;
 /**
  * @author lihang15
  */
-@Getter
-@Setter
-@ToString
+@Data
 public class UserPO  implements Serializable {
     /**
      * 

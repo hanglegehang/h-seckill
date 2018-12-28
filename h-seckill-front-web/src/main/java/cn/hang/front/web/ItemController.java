@@ -4,6 +4,7 @@ import cn.hang.front.consumer.ItemClient;
 import cn.hang.front.service.ItemService;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.po.ItemPO;
+import cn.hang.hseckill.pojo.vo.ItemVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Response<ItemPO> getItemById(@PathVariable("id") Long id) {
+    public Response<ItemVO> getItemById(@PathVariable("id") Long id) {
         log.info("ItemController getItemById,id{}", id);
         return itemService.getItemById(id);
     }

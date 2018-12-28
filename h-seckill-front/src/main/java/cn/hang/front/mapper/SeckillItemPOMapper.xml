@@ -9,6 +9,8 @@
     <result column="item_sell_point" jdbcType="VARCHAR" property="itemSellPoint" />
     <result column="item_price" jdbcType="BIGINT" property="itemPrice" />
     <result column="item_sell_num" jdbcType="INTEGER" property="itemSellNum" />
+    <result column="item_sell_limit" jdbcType="INTEGER" property="itemSellLimit" />
+    <result column="item_sold_num" jdbcType="INTEGER" property="itemSoldNum" />
     <result column="discount" jdbcType="REAL" property="discount" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
@@ -76,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, item_id, item_url, item_title, item_sell_point, item_price, item_sell_num, discount, 
-    start_time, end_time, status, is_delete, gmt_create, gmt_update
+    id, item_id, item_url, item_title, item_sell_point, item_price, item_sell_num, item_sell_limit, 
+    item_sold_num, discount, start_time, end_time, status, is_delete, gmt_create, gmt_update
   </sql>
   <select id="selectByExample" parameterType="cn.hang.hseckill.pojo.po.SeckillItemPOExample" resultMap="BaseResultMap">
     select
@@ -112,14 +114,16 @@
   <insert id="insert" parameterType="cn.hang.hseckill.pojo.po.SeckillItemPO">
     insert into h_seckill_item (id, item_id, item_url, 
       item_title, item_sell_point, item_price, 
-      item_sell_num, discount, start_time, 
-      end_time, status, is_delete, 
-      gmt_create, gmt_update)
+      item_sell_num, item_sell_limit, item_sold_num, 
+      discount, start_time, end_time, 
+      status, is_delete, gmt_create, 
+      gmt_update)
     values (#{id,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{itemUrl,jdbcType=VARCHAR}, 
       #{itemTitle,jdbcType=VARCHAR}, #{itemSellPoint,jdbcType=VARCHAR}, #{itemPrice,jdbcType=BIGINT}, 
-      #{itemSellNum,jdbcType=INTEGER}, #{discount,jdbcType=REAL}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP})
+      #{itemSellNum,jdbcType=INTEGER}, #{itemSellLimit,jdbcType=INTEGER}, #{itemSoldNum,jdbcType=INTEGER}, 
+      #{discount,jdbcType=REAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtUpdate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.hang.hseckill.pojo.po.SeckillItemPO">
     insert into h_seckill_item
@@ -144,6 +148,12 @@
       </if>
       <if test="itemSellNum != null">
         item_sell_num,
+      </if>
+      <if test="itemSellLimit != null">
+        item_sell_limit,
+      </if>
+      <if test="itemSoldNum != null">
+        item_sold_num,
       </if>
       <if test="discount != null">
         discount,
@@ -188,6 +198,12 @@
       </if>
       <if test="itemSellNum != null">
         #{itemSellNum,jdbcType=INTEGER},
+      </if>
+      <if test="itemSellLimit != null">
+        #{itemSellLimit,jdbcType=INTEGER},
+      </if>
+      <if test="itemSoldNum != null">
+        #{itemSoldNum,jdbcType=INTEGER},
       </if>
       <if test="discount != null">
         #{discount,jdbcType=REAL},
@@ -242,6 +258,12 @@
       <if test="record.itemSellNum != null">
         item_sell_num = #{record.itemSellNum,jdbcType=INTEGER},
       </if>
+      <if test="record.itemSellLimit != null">
+        item_sell_limit = #{record.itemSellLimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemSoldNum != null">
+        item_sold_num = #{record.itemSoldNum,jdbcType=INTEGER},
+      </if>
       <if test="record.discount != null">
         discount = #{record.discount,jdbcType=REAL},
       </if>
@@ -277,6 +299,8 @@
       item_sell_point = #{record.itemSellPoint,jdbcType=VARCHAR},
       item_price = #{record.itemPrice,jdbcType=BIGINT},
       item_sell_num = #{record.itemSellNum,jdbcType=INTEGER},
+      item_sell_limit = #{record.itemSellLimit,jdbcType=INTEGER},
+      item_sold_num = #{record.itemSoldNum,jdbcType=INTEGER},
       discount = #{record.discount,jdbcType=REAL},
       start_time = #{record.startTime,jdbcType=TIMESTAMP},
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
@@ -308,6 +332,12 @@
       </if>
       <if test="itemSellNum != null">
         item_sell_num = #{itemSellNum,jdbcType=INTEGER},
+      </if>
+      <if test="itemSellLimit != null">
+        item_sell_limit = #{itemSellLimit,jdbcType=INTEGER},
+      </if>
+      <if test="itemSoldNum != null">
+        item_sold_num = #{itemSoldNum,jdbcType=INTEGER},
       </if>
       <if test="discount != null">
         discount = #{discount,jdbcType=REAL},
@@ -341,6 +371,8 @@
       item_sell_point = #{itemSellPoint,jdbcType=VARCHAR},
       item_price = #{itemPrice,jdbcType=BIGINT},
       item_sell_num = #{itemSellNum,jdbcType=INTEGER},
+      item_sell_limit = #{itemSellLimit,jdbcType=INTEGER},
+      item_sold_num = #{itemSoldNum,jdbcType=INTEGER},
       discount = #{discount,jdbcType=REAL},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},

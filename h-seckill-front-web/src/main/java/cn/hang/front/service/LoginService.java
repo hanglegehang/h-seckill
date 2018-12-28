@@ -17,7 +17,13 @@ public interface LoginService {
      * @param userPO
      * @return
      */
-    public Response<UserPO> loginCheck(LoginRegisterInfoDTO userPO);
+    Response<UserPO> loginCheck(LoginRegisterInfoDTO userPO);
 
+    /**
+     * 注册
+     *
+     * @param loginRegisterInfoDTO
+     * @return
+     */
     Response register(LoginRegisterInfoDTO loginRegisterInfoDTO);
 }

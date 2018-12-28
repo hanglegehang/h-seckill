@@ -13,7 +13,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  **/
 @EnableFeignClients
 @EnableEurekaClient
-@EnableRedisHttpSession
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds=86400)
 @SpringBootApplication
 public class FrontWebApplication {
     public static void main(String[] args) {

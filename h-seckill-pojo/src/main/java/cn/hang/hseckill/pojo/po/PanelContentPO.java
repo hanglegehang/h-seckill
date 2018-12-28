@@ -1,19 +1,12 @@
 package cn.hang.hseckill.pojo.po;
 
-import lombok.Getter;
-import lombok.Setter;
+import cn.hang.hseckill.pojo.vo.ItemVO;
+import lombok.Data;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 public class PanelContentPO {
-
-    private ItemPO itemPO;
-
-    private SeckillItemPO seckillItemPO;
-
-    private Integer isSeckillItem;
     /**
      *
      */

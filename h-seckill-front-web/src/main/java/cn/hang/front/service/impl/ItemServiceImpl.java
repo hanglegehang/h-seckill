@@ -6,6 +6,7 @@ import cn.hang.hseckill.common.constant.Global;
 import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.po.ItemPO;
+import cn.hang.hseckill.pojo.vo.ItemVO;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -38,7 +39,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Response<ItemPO> getItemById(Long id) {
+    public Response<ItemVO> getItemById(Long id) {
         return itemClient.getItemById(id);
     }
 }

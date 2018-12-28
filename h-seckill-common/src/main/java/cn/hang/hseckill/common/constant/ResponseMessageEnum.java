@@ -16,7 +16,9 @@ public enum ResponseMessageEnum implements ResponseMessageInterface {
     NOT_FOUND(404, "没有查询结果"),
     NO_COMPETENCE(401, "未登录"),
     ACCOUNT_NOT_EXIST(402, "账户不存在"),
-    ERROR(500, "操作失败");
+    ERROR(500, "操作失败"),
+    NETWORK_ERROR(501, "服务器开小差了")
+    ;
 
     private int code;
     private String message;

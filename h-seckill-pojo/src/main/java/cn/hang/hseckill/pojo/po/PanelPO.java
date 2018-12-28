@@ -1,18 +1,11 @@
 package cn.hang.hseckill.pojo.po;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class PanelPO {
-
-    private List<PanelContentPO> panelContents;
 
     /**
      * 类目ID
@@ -25,7 +18,7 @@ public class PanelPO {
     private String name;
 
     /**
-     * 类型 0轮播图 1板块种类一 2板块种类二 3板块种类三 
+     * 类型 0轮播图 1板块种类一 2板块种类二 3板块种类三
      */
     private Integer type;
 

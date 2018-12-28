@@ -6,8 +6,10 @@ import cn.hang.hseckill.pojo.po.UserPO;
 import cn.hang.hseckill.pojo.po.UserPOExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 @Mapper
+@Repository
 public interface UserPOMapper {
     long countByExample(UserPOExample example);
 

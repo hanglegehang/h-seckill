@@ -74,7 +74,7 @@ public class SeckillItemPOExample {
     }
 
     /**
-     * h_seckill_item 2018-12-17
+     * h_seckill_item 2018-12-28
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -567,6 +567,126 @@ public class SeckillItemPOExample {
             return (Criteria) this;
         }
 
+        public Criteria andItemSellLimitIsNull() {
+            addCriterion("item_sell_limit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitIsNotNull() {
+            addCriterion("item_sell_limit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitEqualTo(Integer value) {
+            addCriterion("item_sell_limit =", value, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitNotEqualTo(Integer value) {
+            addCriterion("item_sell_limit <>", value, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitGreaterThan(Integer value) {
+            addCriterion("item_sell_limit >", value, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitGreaterThanOrEqualTo(Integer value) {
+            addCriterion("item_sell_limit >=", value, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitLessThan(Integer value) {
+            addCriterion("item_sell_limit <", value, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitLessThanOrEqualTo(Integer value) {
+            addCriterion("item_sell_limit <=", value, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitIn(List<Integer> values) {
+            addCriterion("item_sell_limit in", values, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitNotIn(List<Integer> values) {
+            addCriterion("item_sell_limit not in", values, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitBetween(Integer value1, Integer value2) {
+            addCriterion("item_sell_limit between", value1, value2, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSellLimitNotBetween(Integer value1, Integer value2) {
+            addCriterion("item_sell_limit not between", value1, value2, "itemSellLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumIsNull() {
+            addCriterion("item_sold_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumIsNotNull() {
+            addCriterion("item_sold_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumEqualTo(Integer value) {
+            addCriterion("item_sold_num =", value, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumNotEqualTo(Integer value) {
+            addCriterion("item_sold_num <>", value, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumGreaterThan(Integer value) {
+            addCriterion("item_sold_num >", value, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("item_sold_num >=", value, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumLessThan(Integer value) {
+            addCriterion("item_sold_num <", value, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumLessThanOrEqualTo(Integer value) {
+            addCriterion("item_sold_num <=", value, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumIn(List<Integer> values) {
+            addCriterion("item_sold_num in", values, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumNotIn(List<Integer> values) {
+            addCriterion("item_sold_num not in", values, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumBetween(Integer value1, Integer value2) {
+            addCriterion("item_sold_num between", value1, value2, "itemSoldNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemSoldNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("item_sold_num not between", value1, value2, "itemSoldNum");
+            return (Criteria) this;
+        }
+
         public Criteria andDiscountIsNull() {
             addCriterion("discount is null");
             return (Criteria) this;
@@ -999,7 +1119,7 @@ public class SeckillItemPOExample {
     }
 
     /**
-     * h_seckill_item 2018-12-17
+     * h_seckill_item 2018-12-28
      */
     public static class Criterion {
         private String condition;

@@ -33,7 +33,7 @@ public class LoginController {
     @RequestMapping("/checkLoginStatus")
     public Response checkLoginStatus() {
         log.info("checkLoginStatus");
-        UserPO userPO = (UserPO) SessionUtils.get("userInfo");
+        UserPO userPO = (UserPO) SessionUtils.get(Global.SESSION_USER_INFO);
         if (userPO == null) {
             log.info("checkLoginStatus not login success");
             return Response.error(ResponseMessageEnum.NO_COMPETENCE);

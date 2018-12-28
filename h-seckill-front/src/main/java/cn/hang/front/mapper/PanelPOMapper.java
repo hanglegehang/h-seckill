@@ -2,12 +2,15 @@ package cn.hang.front.mapper;
 
 import cn.hang.hseckill.pojo.po.PanelPO;
 import cn.hang.hseckill.pojo.po.PanelPOExample;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 @Mapper
+@Repository
 public interface PanelPOMapper {
     long countByExample(PanelPOExample example);
 

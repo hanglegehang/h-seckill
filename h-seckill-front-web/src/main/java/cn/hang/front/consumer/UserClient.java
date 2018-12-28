@@ -25,7 +25,7 @@ public interface UserClient {
      * @return
      */
     @GetMapping("/getUserByUserName")
-    UserPO getUserByUserName(@RequestParam("username") String username);
+    Response<UserPO> getUserByUserName(@RequestParam("username") String username);
 
     /**
      * 新增用户
@@ -54,9 +54,22 @@ public interface UserClient {
     @PostMapping("/address/add")
     Response addAddress(@RequestBody AddressPO addressPO);
 
+    /**
+     * 删除收货地址
+     *
+     * @param addressId
+     * @param userId
+     * @return
+     */
     @PostMapping("/address/del")
     Response deleteAddress(@RequestParam("addressId") Long addressId, @RequestParam("userId") Long userId);
 
+    /**
+     * 更新收货地址
+     *
+     * @param addressVO
+     * @return
+     */
     @PostMapping("/address/update")
     Response updateAddress(@RequestBody AddressPO addressVO);
 }

@@ -39,16 +39,15 @@ public class UserProvider {
     private UserService userService;
 
     @RequestMapping("/getUserByUserName")
-    public UserPO getUserByUserName(@RequestParam String username) {
+    public Response<UserPO> getUserByUserName(@RequestParam String username) {
         UserPOExample userPOExample = new UserPOExample();
         UserPOExample.Criteria criteria = userPOExample.createCriteria();
         criteria.andUsernameEqualTo(username);
-
         List<UserPO> userPOList = userPOMapper.selectByExample(userPOExample);
         if (CollectionUtils.isEmpty(userPOList)) {
-            return null;
+            return Response.error();
         }
-        return userPOList.get(0);
+        return Response.success(userPOList.get(0));
     }
 
     @PostMapping("/insertUser")

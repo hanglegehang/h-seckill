@@ -14,8 +14,6 @@ import java.util.Date;
 @Setter
 @Getter
 public class ItemPO implements Serializable {
-
-    private SeckillItemPO seckillItemPO;
     /**
      *
      */

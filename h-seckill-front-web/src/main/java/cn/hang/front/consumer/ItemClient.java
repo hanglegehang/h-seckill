@@ -2,7 +2,7 @@ package cn.hang.front.consumer;
 
 import cn.hang.front.consumer.fallback.ItemFallbackFactory;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.po.ItemPO;
+import cn.hang.hseckill.pojo.vo.ItemVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +25,10 @@ public interface ItemClient {
     /**
      * 获取商品by id
      *
+     * @param id
      * @return
      */
     @GetMapping("/item/{id}")
-    Response<ItemPO> getItemById(@PathVariable("id") Long id);
+    Response<ItemVO> getItemById(@PathVariable("id") Long id);
 }
 
