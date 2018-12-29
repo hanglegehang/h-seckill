@@ -44,10 +44,9 @@ public class LoginServiceImpl implements LoginService {
         if (gtResult != 1) {
             return Response.error("验证码校验失败");
         }
-        log.info("user login success username:[{}]", loginRegisterInfoDTO.getUsername());
         Response<UserVO> response = userClient.loginCheck(loginRegisterInfoDTO);
         if (response.getCode() == ResponseMessageEnum.SUCCESS.getCode()) {
-            log.info("new user register success");
+            log.info("user login success username:[{}]", loginRegisterInfoDTO.getUsername());
             SessionUtils.put(Global.SESSION_USER_INFO, response.getData());
         }
         return response;
@@ -73,7 +72,6 @@ public class LoginServiceImpl implements LoginService {
         } catch (SessionException e) {
             log.warn("checkLoginStatus not login success", e.getMsg());
             return Response.error(ResponseMessageEnum.NO_COMPETENCE);
-
         }
         log.info("checkLoginStatus login success,username:[{}]", userVO.getUsername());
         return Response.success(userVO);
