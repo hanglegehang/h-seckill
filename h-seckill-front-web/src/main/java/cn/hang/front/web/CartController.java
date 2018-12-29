@@ -3,7 +3,7 @@ package cn.hang.front.web;
 import cn.hang.front.service.CartService;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.common.utils.UserHome;
-import cn.hang.hseckill.pojo.vo.CartVO;
+import cn.hang.hseckill.pojo.vo.front.CartVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

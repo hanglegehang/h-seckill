@@ -1,20 +1,15 @@
 package cn.hang.front.web;
 
 import cn.hang.front.service.UserService;
-import cn.hang.hseckill.common.constant.Global;
-import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.common.utils.SessionUtils;
 import cn.hang.hseckill.common.utils.UserHome;
 import cn.hang.hseckill.pojo.po.AddressPO;
-import cn.hang.hseckill.pojo.po.UserPO;
-import cn.hang.hseckill.pojo.vo.AddressVO;
+import cn.hang.hseckill.pojo.vo.front.AddressVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author lihang15

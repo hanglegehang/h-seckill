@@ -2,14 +2,10 @@ package cn.hang.front.service.impl;
 
 import cn.hang.front.consumer.ItemClient;
 import cn.hang.front.service.ItemService;
-import cn.hang.hseckill.common.constant.Global;
 import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.po.ItemPO;
-import cn.hang.hseckill.pojo.vo.ItemVO;
-import com.alibaba.fastjson.JSON;
+import cn.hang.hseckill.pojo.vo.front.ItemVO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

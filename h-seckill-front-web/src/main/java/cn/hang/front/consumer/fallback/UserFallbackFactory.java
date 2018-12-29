@@ -6,7 +6,7 @@ import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
 import cn.hang.hseckill.pojo.po.AddressPO;
 import cn.hang.hseckill.pojo.po.UserPO;
-import cn.hang.hseckill.pojo.vo.AddressVO;
+import cn.hang.hseckill.pojo.vo.front.UserVO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -29,9 +29,9 @@ public class UserFallbackFactory implements FallbackFactory<UserClient> {
             }
 
             @Override
-            public int insertUser(LoginRegisterInfoDTO loginRegisterInfoDTO) {
+            public Response<UserVO> registerUser(LoginRegisterInfoDTO loginRegisterInfoDTO) {
                 log.error("UserClient.insertUser failBack,loginRegisterInfoDTO={}", loginRegisterInfoDTO, cause);
-                return 0;
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
             @Override
@@ -56,6 +56,12 @@ public class UserFallbackFactory implements FallbackFactory<UserClient> {
             @Override
             public Response updateAddress(AddressPO addressPO) {
                 log.error("UserClient.updateAddress failBack,addressVO={}", addressPO, cause);
+                return Response.error(ResponseMessageEnum.NETWORK_ERROR);
+            }
+
+            @Override
+            public Response<UserVO> loginCheck(LoginRegisterInfoDTO loginRegisterInfoDTO) {
+                log.error("UserClient.loginCheck failBack,loginRegisterInfoDTO={}", loginRegisterInfoDTO, cause);
                 return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
         };

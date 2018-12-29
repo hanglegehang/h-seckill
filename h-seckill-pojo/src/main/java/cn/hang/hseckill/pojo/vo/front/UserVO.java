@@ -1,7 +1,8 @@
-package cn.hang.hseckill.pojo.vo;
+package cn.hang.hseckill.pojo.vo.front;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @create 2018-12-28 23:02
  **/
 @Data
-public class UserVO {
+public class UserVO implements Serializable {
     /**
      *
      */

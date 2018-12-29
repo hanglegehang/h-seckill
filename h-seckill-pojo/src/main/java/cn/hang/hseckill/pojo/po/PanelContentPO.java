@@ -1,6 +1,5 @@
 package cn.hang.hseckill.pojo.po;
 
-import cn.hang.hseckill.pojo.vo.ItemVO;
 import lombok.Data;
 
 import java.util.Date;

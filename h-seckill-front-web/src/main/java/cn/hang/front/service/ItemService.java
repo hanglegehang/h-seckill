@@ -1,8 +1,7 @@
 package cn.hang.front.service;
 
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.po.ItemPO;
-import cn.hang.hseckill.pojo.vo.ItemVO;
+import cn.hang.hseckill.pojo.vo.front.ItemVO;
 
 /**
  * @author lihang15

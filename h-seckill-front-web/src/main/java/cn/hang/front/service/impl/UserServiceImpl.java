@@ -5,7 +5,7 @@ import cn.hang.front.service.UserService;
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.common.utils.UserHome;
 import cn.hang.hseckill.pojo.po.AddressPO;
-import cn.hang.hseckill.pojo.vo.AddressVO;
+import cn.hang.hseckill.pojo.vo.front.AddressVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

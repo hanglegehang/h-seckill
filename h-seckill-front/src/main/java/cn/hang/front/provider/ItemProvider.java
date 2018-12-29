@@ -2,8 +2,8 @@ package cn.hang.front.provider;
 
 import cn.hang.front.business.ItemBusiness;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.vo.ItemVO;
-import cn.hang.hseckill.pojo.vo.PanelVO;
+import cn.hang.hseckill.pojo.vo.front.ItemVO;
+import cn.hang.hseckill.pojo.vo.front.PanelVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

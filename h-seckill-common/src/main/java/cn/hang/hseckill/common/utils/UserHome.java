@@ -1,7 +1,9 @@
 package cn.hang.hseckill.common.utils;
 
 import cn.hang.hseckill.common.constant.Global;
+import cn.hang.hseckill.common.exception.SessionException;
 import cn.hang.hseckill.pojo.po.UserPO;
+import cn.hang.hseckill.pojo.vo.front.UserVO;
 
 import java.util.Objects;
 
@@ -12,15 +14,19 @@ import java.util.Objects;
  **/
 public class UserHome {
 
-    public static UserPO currentUser() {
-        UserPO userPO = (UserPO) SessionUtils.get(Global.SESSION_USER_INFO);
-        Objects.requireNonNull(userPO, "session用户信息为空");
-        return userPO;
+    public static UserVO currentUser() {
+        UserVO userVO = (UserVO) SessionUtils.get(Global.SESSION_USER_INFO);
+        if (userVO == null) {
+            throw new SessionException("session过期");
+        }
+        return userVO;
     }
 
     public static Long currentUserId() {
-        UserPO userPO = (UserPO) SessionUtils.get(Global.SESSION_USER_INFO);
-        Objects.requireNonNull(userPO, "session用户信息为空");
-        return userPO.getId();
+        UserVO userVO = (UserVO) SessionUtils.get(Global.SESSION_USER_INFO);
+        if (userVO == null) {
+            throw new SessionException("session用户信息为空");
+        }
+        return userVO.getId();
     }
 }

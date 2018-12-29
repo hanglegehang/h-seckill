@@ -5,7 +5,7 @@ import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.dto.LoginRegisterInfoDTO;
 import cn.hang.hseckill.pojo.po.AddressPO;
 import cn.hang.hseckill.pojo.po.UserPO;
-import cn.hang.hseckill.pojo.vo.AddressVO;
+import cn.hang.hseckill.pojo.vo.front.UserVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +33,8 @@ public interface UserClient {
      * @param loginRegisterInfoDTO
      * @return
      */
-    @PostMapping("/insertUser")
-    int insertUser(@RequestBody LoginRegisterInfoDTO loginRegisterInfoDTO);
+    @PostMapping("/registerUser")
+    Response<UserVO> registerUser(@RequestBody LoginRegisterInfoDTO loginRegisterInfoDTO);
 
     /**
      * 根据用户id获取收货地址
@@ -72,5 +72,8 @@ public interface UserClient {
      */
     @PostMapping("/address/update")
     Response updateAddress(@RequestBody AddressPO addressVO);
+
+    @PostMapping("/loginCheck")
+    Response<UserVO> loginCheck(@RequestBody LoginRegisterInfoDTO loginRegisterInfoDTO);
 }
 

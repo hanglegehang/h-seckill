@@ -3,7 +3,7 @@ package cn.hang.front.consumer.fallback;
 import cn.hang.front.consumer.CartClient;
 import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.vo.CartVO;
+import cn.hang.hseckill.pojo.vo.front.CartVO;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

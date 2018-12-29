@@ -2,7 +2,7 @@ package cn.hang.front.service;
 
 import cn.hang.hseckill.common.pojo.Response;
 import cn.hang.hseckill.pojo.po.AddressPO;
-import cn.hang.hseckill.pojo.vo.AddressVO;
+import cn.hang.hseckill.pojo.vo.front.AddressVO;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package cn.hang.front.business;
 
-import cn.hang.hseckill.pojo.vo.ItemVO;
-import cn.hang.hseckill.pojo.vo.PanelVO;
+import cn.hang.hseckill.pojo.vo.front.ItemVO;
+import cn.hang.hseckill.pojo.vo.front.PanelVO;
 
 import java.util.List;
 

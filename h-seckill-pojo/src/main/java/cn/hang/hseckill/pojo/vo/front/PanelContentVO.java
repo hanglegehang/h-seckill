@@ -1,8 +1,6 @@
-package cn.hang.hseckill.pojo.vo;
+package cn.hang.hseckill.pojo.vo.front;
 
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * @author lihang15

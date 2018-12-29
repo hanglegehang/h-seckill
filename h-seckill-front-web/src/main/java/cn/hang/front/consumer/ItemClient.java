@@ -2,7 +2,7 @@ package cn.hang.front.consumer;
 
 import cn.hang.front.consumer.fallback.ItemFallbackFactory;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.pojo.vo.ItemVO;
+import cn.hang.hseckill.pojo.vo.front.ItemVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;

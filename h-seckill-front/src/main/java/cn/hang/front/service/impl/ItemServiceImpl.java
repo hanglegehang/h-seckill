@@ -7,9 +7,7 @@ import cn.hang.front.mapper.SeckillItemPOMapper;
 import cn.hang.front.service.ItemService;
 import cn.hang.hseckill.common.constant.CodeBaseInterface;
 import cn.hang.hseckill.pojo.po.*;
-import cn.hang.hseckill.pojo.vo.PanelContentVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
