@@ -1,10 +1,14 @@
 package cn.hang.front;
 
+import cn.hang.distributed.lock.DistributedLock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @author lihang15
@@ -13,7 +17,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  **/
 @EnableFeignClients
 @EnableEurekaClient
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds=86400)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400)
 @SpringBootApplication
 public class FrontWebApplication {
     public static void main(String[] args) {
@@ -21,4 +25,12 @@ public class FrontWebApplication {
         System.out.println("Server start succ");
     }
 
+
+    @Autowired
+    private DistributedLock distributedLock;
+
+    @PostConstruct
+    public void test() {
+        distributedLock.lock("hhhh");
+    }
 }

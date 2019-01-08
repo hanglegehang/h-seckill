@@ -19,13 +19,13 @@ public class ItemFallbackFactory implements FallbackFactory<ItemClient> {
         return new ItemClient() {
             @Override
             public Response getIndexInfo() {
-                log.error("ItemClient.getIndexInfo failBack");
+                log.error("ItemClient.getIndexInfo failBack",cause);
                 return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
 
             @Override
             public Response<ItemVO> getItemById(Long id) {
-                log.error("ItemClient.getItemById failBack id={}", id);
+                log.error("ItemClient.getItemById failBack id={}", id,cause);
                 return Response.error(ResponseMessageEnum.NETWORK_ERROR);
             }
         };

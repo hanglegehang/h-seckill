@@ -31,7 +31,16 @@ eureka:
 feign:
   hystrix:
     enabled: true
-
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 2000
 
 spring:
   application:
