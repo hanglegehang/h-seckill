@@ -18,7 +18,6 @@ server:
 #log
 logging:
   config: classpath:logback.xml
-
 eureka:
   client:
     serviceUrl:

@@ -58,3 +58,5 @@ service:
   h-seckill-front:
     name: h-seckill-front-dev
     path: /front
+#distributed-lock:
+#  timeout: 1000

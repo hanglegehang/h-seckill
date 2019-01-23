@@ -1,12 +1,9 @@
 package cn.hang.front.interceptor;
 
-import cn.hang.hseckill.common.constant.Global;
 import cn.hang.hseckill.common.constant.ResponseMessageEnum;
 import cn.hang.hseckill.common.exception.SessionException;
 import cn.hang.hseckill.common.pojo.Response;
-import cn.hang.hseckill.common.utils.SessionUtils;
 import cn.hang.hseckill.common.utils.UserHome;
-import cn.hang.hseckill.pojo.po.UserPO;
 import cn.hang.hseckill.pojo.vo.front.UserVO;
 import com.alibaba.fastjson.JSON;
 import org.springframework.web.servlet.HandlerInterceptor;
